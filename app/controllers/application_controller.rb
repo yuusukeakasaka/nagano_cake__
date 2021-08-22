@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   
+  def after_sign_in_path_for(resource)
+     admin_items_path(resource)
+  end
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
