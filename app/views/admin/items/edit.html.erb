@@ -1,5 +1,5 @@
 <h2>商品編集</h2>
-<%= form_with model:@item, url: '/admin/items/:id/', local:true do |f| %>
+<%= form_with model:@item, url: admin_item_path, local:true do |f| %>
 <p>商品画像：<%= f.attachment_field :image %></p>
 <p>商品名：<%= f.text_field :name %></p>
 <p>商品説明：<%= f.text_area :introduction %></p>
