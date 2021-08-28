@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :customers
+
   root :to => "homes#top"
   get 'homes/about'
   devise_for :admin
 
+  devise_for :customers, controllers: {
+  sessions:      'customers/sessions',
+  passwords:     'customers/passwords',
+  registrations: 'customers/registrations'
+  }
 
 
    namespace :public do
