@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
       admin_items_path(resource)
   end
 
-  before_action :authenticate_admin!
+
   protected
 
   def configure_permitted_parameters
