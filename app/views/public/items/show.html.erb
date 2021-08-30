@@ -1,0 +1,6 @@
+<div>
+  <%= attachment_image_tag @item, :image , :fill, 100, 100, format: 'jpeg' %>
+  <p>商品名：<%= @item.name %></p>
+  <p>商品説明：<%= @item.introduction %></p>
+  <p>税抜価格：<%= @item.price %></p>
+</div>
