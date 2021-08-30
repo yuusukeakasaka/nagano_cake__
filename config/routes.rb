@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     devise_for :customers
     root :to => "homes#top"
     get 'homes/about'
+    resources :items, only:[:show, :index]
     resources :customers, only:[:show]
    end
 
