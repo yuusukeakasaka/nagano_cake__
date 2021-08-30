@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     resources :items, only:[:show, :index]
     resources :customers, only:[:show]
+    resources :cart_items, only:[:index, :update, :destroy, :create]
    end
 
    namespace :admin do
