@@ -1,1 +1,15 @@
-<h1>しょう！！！</h1>
+<h1>マイページ</h1>
+
+<div>登録情報</div>
+<%= link_to "編集する", customers_edit_path %>
+
+<P>氏名:<%= @customer.last_name %><%= @customer.first_name %></P>
+<P>カナ:<%= @customer.last_name_kana %><%= @customer.first_name_kana %></P>
+<P>郵便番号:<%= @customer.postal_code %></P>
+<P>住所:<%= @customer.address %></P>
+<p>電話番号:<%= @customer.telephone_number %></p>
+<p>メールアドレス:<%= @customer.email %></p>
+
+<P>配送先</P>
+<p>注文履歴</p>
+
