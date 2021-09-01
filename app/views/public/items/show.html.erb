@@ -5,7 +5,7 @@
   <p>税抜価格：<%= @item.price %></p>
 </div>
 
-<%= form_with model: @cart_item do |f| %>
+<%= form_with model:@cart_item, local:true do |f| %>
 <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"],["4", "4"], ["5", "5"]], include_blank: "個数選択" %>
 <%= f.submit "カートに入れる"%>
 <% end %>

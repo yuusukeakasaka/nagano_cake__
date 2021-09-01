@@ -9,6 +9,7 @@ Rails.application.routes.draw do
    scope module: :public do
     devise_for :customers
     root :to => "homes#top"
+    get "/customers/my_page" => "customers#show"
     get 'homes/about'
     resources :items, only:[:show, :index]
     resources :customers, only:[:show]
