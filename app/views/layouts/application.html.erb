@@ -9,7 +9,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+           <h3><%= link_to 'LOGO', root_path, class: 'nav-link text-dark' %></h3>
+
+
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
+
     <% if admin_signed_in? %>
     <li>
       <%= link_to "商品一覧", admin_items_path %>
@@ -22,17 +34,17 @@
     </li>
 
     <% elsif customer_signed_in? %>
-    <li>
-      <%= link_to "マイページ", customers_my_page_path %>
+    <li class="nav-item">
+      <%= link_to "マイページ", customers_my_page_path, class: 'nav-link text-dark' %>
     </li>
-    <li>
-      <%= link_to "商品一覧", items_path %>
+    <li class="nav-item">
+      <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
     </li>
-　　<li>
-　　  カート
+　　<li class="nav-item">
+　　  <%= link_to "カート", cart_items_path, class: 'nav-link text-dark' %>
 　　</li>
-　　<li>
-　　  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+　　<li class="nav-item">
+　　  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
 　　</li>
 
     <% else %>
@@ -49,6 +61,12 @@
       <%= link_to "ログイン", customer_session_path %>
     </li>
     <% end %>
+
+        </ul>
+        </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
