@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
 
   devise_for :admin
-
-
+  delete  'cart_items/destroy_all' => 'public/cart_items#destroy_all'
 
 
    scope module: :public do
