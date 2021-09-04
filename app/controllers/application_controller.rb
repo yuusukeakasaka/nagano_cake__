@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       if current_customer
         root_path
       else current_admin
-        admin_root
+        admin_root_path
       end
   end
 
