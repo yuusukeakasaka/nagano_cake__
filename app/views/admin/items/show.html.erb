@@ -1,8 +1,48 @@
-<div>
-  <%= attachment_image_tag @item, :image , :fill, 100, 100, format: 'jpeg' %>
-  <p>商品名：<%= @item.name %></p>
-  <p>商品説明：<%= @item.introduction %></p>
-  <p>税抜価格：<%= @item.price %></p>
-
-<%= link_to '編集する', edit_admin_item_path %>
+<div class="container px-5 py-5">
+  <div class="row mb-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-10"><h4>商品詳細</h4></div>
+    <div class="col-md-1"></div>
+  </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="img_field">
+      <%= attachment_image_tag @item, :image , :fill, 100, 100, format: 'jpeg' %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-3">
+          <p>商品名</p>
+        </div>
+        <div class="col-md-5">
+          <%= @item.name %>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <p>商品説明</p>
+          </div>
+          <div class="col-md-5">
+            <%= @item.introduction %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <p>税込価格<br>(税抜価格)</p>
+          </div>
+          <div class="col-md-5">
+          <%= @item.price %> (<%= @item.with_tax_price %>)円
+          </div>
+        </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-8 text-center mt-4">
+      <%= link_to '編集する', edit_admin_item_path, class:"btn btn-success" %>
+    </div>
+  </div>

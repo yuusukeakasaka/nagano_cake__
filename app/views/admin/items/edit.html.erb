@@ -1,8 +1,46 @@
-<h2>商品編集</h2>
-<%= form_with model:@item, url: admin_item_path, local:true do |f| %>
-<p>商品画像：<%= f.attachment_field :image %></p>
-<p>商品名：<%= f.text_field :name %></p>
-<p>商品説明：<%= f.text_area :introduction %></p>
-<p>税抜価格：<%= f.text_field :price %></p>
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container px-5 py-5">
+  <div class="row mb-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-10"><h4>商品編集</h4></div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-9 mx-auto">
+    <%= form_with model:@item, url: admin_item_path, local:true do |f| %>
+
+     <div class="form-group">
+      <div class="row">
+       <div class="col-md-3">商品画像</div>
+       <%= f.attachment_field :image, class: "col-md-6" %>
+      </div>
+     </div>
+
+     <div class="form-group">
+       <div class="row">
+        <div class="col-md-3">商品名</div>
+        <%= f.text_field :name, class: "col-md-6 form-control" %>
+       </div>
+     </div>
+
+     <div class="form-group">
+       <div class="row">
+         <div class="col-md-3">商品説明</div>
+         <%= f.text_area :introduction, class: "col-md-6 form-control" %>
+       </div>
+     </div>
+
+     <div class="form-group">
+       <div class="row">
+         <div class="col-md-3">税抜価格</div>
+       <div class="col-md-6 d-flex flex-row pl-0">
+         <%= f.text_field :price, class: "form-control" %><span class="pt-2 pl-2">円</span>
+       </div>
+     </div>
+
+    <div class="text-center">
+    <%= f.submit "変更を保存", class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+</div>
