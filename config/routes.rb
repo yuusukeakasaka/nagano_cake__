@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   devise_for :admin
   delete  'cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  get 'customers/unsubscribe' => 'public/customers#unsubscribe'
 
 
    scope module: :public do
     root :to => "homes#top"
     get "/customers/my_page" => "customers#show"
+    patch "/customers/withdrawl" => "customers#withdrawl", as: 'customers_withdrawl'
     get "/customers/edit" => "customers#edit"
     get 'homes/about'
     resources :items, only:[:show, :index]

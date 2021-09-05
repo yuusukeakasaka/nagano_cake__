@@ -14,6 +14,14 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_my_page_path
   end
 
+  def withdrawl
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: "false")
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
   private
 
    def customer_params
