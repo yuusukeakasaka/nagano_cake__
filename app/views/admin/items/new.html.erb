@@ -1,17 +1,46 @@
-<h1>商品新規登録</h1>
-<%= form_with model: @item, url: '/admin/items', local:true do |f| %>
+<div class="container px-5 py-5">
+  <div class="row mb-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-10"><h1>商品新規登録</h1></div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
 
-<h4>商品名</h4>
-<%= f.text_field :name %>
+<div class="container">
+  <div class="col-md-9 mx-auto">
+   <%= form_with model: @item, url: '/admin/items', local:true do |f| %>
+    <div class="form-group">
+       <div class="row">
+         <div class="col-md-3">商品画像</div>
+         <%= f.attachment_field :image, class: "col-md-6" %>
+      </div>
+    </div>
 
-<h4>商品画像</h4>
-<%= f.attachment_field :image %>
+    <div class="form-group">
+      <div class="row">
+       <div class="col-md-3">商品名</div>
+       <%= f.text_field :name, class: "col-md-6 form-control" %>
+      </div>
+    </div>
 
-<h4>商品説明</h4>
-<%= f.text_area :introduction %>
+    <div class="form-group">
+      <div class="row">
+       <div class="col-md-3">商品説明</div>
+       <%= f.text_area :introduction, rows:'5',class: "col-md-6 form-control" %>
+      </div>
+    </div>
 
-<h4>税抜価格</h4>
-<%= f.text_field :price %>
-<%= f.submit '新規登録' %>
-
-<% end %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">税抜価格</div>
+        <div class="col-md-6 d-flex flex-row pl-0">
+        <%= f.text_field :price, class: "form-control" %><span class="pt-2 pl-2">円</span>
+        </div>
+      </div>
+    </div>
+　　<div class="text-center">
+      <%= f.submit '新規登録', class: "btn btn-lg btn-success" %>
+    </div>
+   <% end %>
+  </div>
+</div>
