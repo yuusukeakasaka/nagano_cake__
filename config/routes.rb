@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     patch "/customers/withdrawl" => "customers#withdrawl", as: 'customers_withdrawl'
     get "/customers/edit" => "customers#edit"
     get 'homes/about'
+    resources :orders, only:[:new, :create, :index, :show]
     resources :items, only:[:show, :index]
     resources :customers, only:[:edit, :update]
     resources :cart_items, only:[:index, :update, :destroy, :create]
