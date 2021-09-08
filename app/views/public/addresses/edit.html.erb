@@ -1,25 +1,30 @@
-<h4>配送先編集</h4>
+<div class= 'container'>
+ <div class= 'row'>
+  <div class='col-md-8'>
+   <h4>配送先編集</h4>
+    <div class="form-group">
+     <%= form_with model:@address,url:address_path, local:true do |f| %>
+     <table>
 
- <%= form_with model:@address,url:address_path, local:true do |f| %>
+     <tr>
+      <td>郵便番号（ハイフンなし）</td>
+      <td><%= f.text_field :postal_code, autofocus: true %></td>
+     </tr>
 
- <tr>
-   <td>郵便番号（ハイフンなし）</td>
-   <td><%= f.text_field :postal_code, autofocus: true %></td>
- </tr>
+     <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, style:"width:300%", autofocus: true %></td>
+     </tr>
 
- <tr>
-   <td>住所</td>
-   <td><%= f.text_field :address, autofocus: true %></td>
- </tr>
+     <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :name, autofocus: true %></td>
+      <td><%= f.submit "変更内容を保存", class: 'btn btn-success' %></td>
+     </tr>
 
- <tr>
-   <td>宛名</td>
-   <td><%= f.text_field :name, autofocus: true %></td>
- </tr>
-
- <tr>
-   <td></td>
-   <td><%= f.submit "変更内容を保存" %></td>
- </tr>
-
- <% end %>
+     </table>
+     <% end %>
+    </div>
+   </div>
+  </div>
+ </div>
