@@ -1,11 +1,25 @@
-<h1>商品一覧</h1>
+<div class="container px-5 py-5">
+ <div class="row mb-3">
+  <div class="col-md-1"></div>
+  <div class="col-md-10 d-flex flex-row "><h3>商品一覧</h3><span class="pt-2 pl-2">(全<%= @items.count %>件)</span></div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
 
-<tbody>
-<% @items.each do |item| %>
-<tr>
- <td><%= attachment_image_tag item, :image, size: "100x100", format: 'jpeg' %></td>
- <td><%= link_to item.name, item_path(item.id) %></td>
- <td><%= item.price %></td>
-</tr>
-<% end %>
-</tbody>
+<div class="container">
+  <div class="row">
+   <% @items.each do |item| %>
+   <div class="card-group">
+    <div class="card card border-light mb-3 ml-1 mr-1">
+    <div class="card-img-top">
+    <%= attachment_image_tag item, :image, size: "100x100", format: 'jpeg' %>
+    </div>
+    <div class="card-body">
+     <div class="card-title"><%= link_to item.name, item_path(item.id) %></div>
+     <div class="card-text"><%= item.price %></div>
+    </div>
+    </div>
+   </div>
+  <% end %>
+ </div>
+</div>
