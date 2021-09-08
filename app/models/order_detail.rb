@@ -4,4 +4,6 @@ class OrderDetail < ApplicationRecord
 
   attachment :image
 
+  belongs_to :order
+
 end
