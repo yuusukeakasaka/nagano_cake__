@@ -1,19 +1,33 @@
-<div>
-ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。
-</div>
-<h3>新着商品</h3>
+<div class="container">
+ <div class="col-md-12 mx-auto" style="height: 100px;"></div>
+ <div class="row align-items-center justify-content-center">
+  <div class="col-md-4"></div>
+  <div class="col-md-8">
+   ようこそ、ながのCAKEへ！<br>
+   このサイトは、ケーキ販売のECサイトになります。<br>
+   会員でない方も商品の閲覧はできますが、<br>
+   購入には会員登録が必要になります。<br>
+  <h3>新着商品</h3>
+  </div>
+  <div class="row">
+   <div class="col-md-12 mx-auto" style="height: 100px;"></div>
+   </div>
 
-<tbody>
-<% @items.each do |item| %>
-<tr>
- <td><%= attachment_image_tag item, :image, size: "100x100", format: 'jpeg' %></td>
- <td><%= link_to item.name, item_path(item.id) %></td>
-
- <td><%= item.price %></td>
-</tr>
+   <div class="row">
+       <% @items.first(4).each do |item| %>
+    <div class="card-group">
+     <div class="card card border-light mb-3 ml-1 mr-1">
+     <div class="card-img-top">
+     <%= attachment_image_tag item, :image, size: "100x100", format: 'jpeg' %>
+     </div>
+     <div class="card-body">
+     <div class="card-title"><%= link_to item.name, item_path(item.id) %></div>
+     <div class="card-text"><%= item.price %></div>
+   </div>
+  </div>
+ </div>
 <% end %>
-<%= link_to "全ての商品を見る", items_path %>
-</tbody>
+ <div class="d-flex align-items-end">
+   <%= link_to "全ての商品を見る", items_path, class: "btn-link pull-right" %>
+</div>
+</div>
