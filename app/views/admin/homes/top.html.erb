@@ -1,1 +1,32 @@
-<h1>admin#top</h1>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">注文履歴一覧</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <table class="table">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+        </tr>
+        <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.to_s(:datetime_mg),admin_order_path(order) %>
+          </td>
+          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+
+          <% @sum = 0 %>
+          <td><% order.order_details.each do |order_detail| %>
+          <% @sum += order_detail.amount %>
+          <% end %>
+          <%= @sum.to_s(:delimited) %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
