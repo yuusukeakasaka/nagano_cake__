@@ -22,6 +22,9 @@ class Public::OrdersController < ApplicationController
          @order.address = Address.find(params[:order][:address_id]).address
          @order.name = Address.find(params[:order][:address_id]).name
       elsif params[:order][:address_number] == "3"
+         @order.postal_code = params[:order][:postal_code]
+         @order.address = params[:order][:address]
+         @order.name = params[:order][:name]
          address_new = current_customer.addresses.new(address_params)
          address_new.save
       end
