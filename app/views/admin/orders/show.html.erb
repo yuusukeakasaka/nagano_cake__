@@ -1,1 +1,76 @@
-<h1>orderしょ</h1>
+<div class="container px-5 py-5">
+  <div class="row mb-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-10"><h4>注文履歴詳細</h4></div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+      <table class="table table-borderless">
+        <tr>
+          <th>購入者</th>
+          <td><%= link_to "#{@order.customer.last_name}#{@order.customer.first_name}", admin_customer_path(@order.customer) %></td>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @order.postal_code%><%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |f| %>
+          <tr>
+            <td><%= f.item.name %></td>
+            <td><%= f.item.with_tax_price %></td>
+            <td><%= f.amount %></td>
+            <td><%= f.item.with_tax_price * f.amount %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+
+          <td><%= @order.total_payment - @order.shipping_cost %></td>
+
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td><%=@order.total_payment.to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
